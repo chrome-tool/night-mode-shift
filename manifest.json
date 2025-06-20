@@ -25,7 +25,7 @@
       "run_at": "document_start"
     }
   ],
-  "permissions": ["storage"],
+  "permissions": ["storage", "scripting"],
   "host_permissions": ["\u003Call_urls>"],
   "web_accessible_resources": [
     {
