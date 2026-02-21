@@ -1,33 +1,10 @@
-function getDarkMode() {
-  return window.localStorage.getItem("darkMode") === "true";
-}
-function getColor() {
-  return window.localStorage.getItem("color") ?? "rgb(93, 93, 93)";
-}
-function getOpacity() {
-  return window.localStorage.getItem("opacity") ?? "0.5";
-}
-function setDarkMode(darkMode) {
-  return window.localStorage.setItem("darkMode", darkMode);
-}
-function setColor(color) {
-  return window.localStorage.setItem("color", color);
-}
-function setOpacity(opacity) {
-  return window.localStorage.setItem("opacity", opacity);
-}
+const DEFAULTS = {
+  darkMode: false,
+  color: "rgb(93, 93, 93)",
+  opacity: "0.5",
+};
 
-chrome.runtime.onMessage.addListener((request, sender) => {
-  if (request.action === "execute") {
-    const { darkMode, color, opacity } = request.params;
-    setDarkMode(darkMode);
-    setColor(color);
-    setOpacity(opacity);
-    excute();
-  }
-});
-
-function excute() {
+function execute(params = DEFAULTS) {
   let screenCoverDiv = document.getElementById("screen-cover");
   if (!screenCoverDiv) {
     screenCoverDiv = document.createElement("div");
@@ -37,17 +14,26 @@ function excute() {
     document.documentElement.appendChild(screenCoverDiv);
   }
 
-  const darkModeVal = getDarkMode();
-  const colorval = getColor();
-  const opacityVal = getOpacity();
+  const darkModeVal = Boolean(params.darkMode);
+  const colorVal = params.color ?? DEFAULTS.color;
+  const opacityVal = params.opacity ?? DEFAULTS.opacity;
+
   if (darkModeVal) {
-    screenCoverDiv.style.backgroundColor = colorval;
+    screenCoverDiv.style.backgroundColor = colorVal;
     screenCoverDiv.style.opacity = opacityVal;
     screenCoverDiv.style.display = "block";
   } else {
     screenCoverDiv.style.display = "none";
   }
 }
+
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.action !== "execute") {
+    return;
+  }
+  execute(request.params ?? DEFAULTS);
+});
+
 (function () {
-  excute();
+  execute(DEFAULTS);
 })();

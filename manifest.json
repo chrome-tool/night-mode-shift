@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "default_locale": "en",
   "description": "__MSG_extDescription__",
   "icons": {
@@ -26,11 +26,5 @@
     }
   ],
   "permissions": ["storage", "scripting"],
-  "host_permissions": ["\u003Call_urls>"],
-  "web_accessible_resources": [
-    {
-      "resources": ["assets/js/*"],
-      "matches": ["\u003Call_urls>"]
-    }
-  ]
+  "host_permissions": ["\u003Call_urls>"]
 }

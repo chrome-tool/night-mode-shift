@@ -9,56 +9,161 @@
   </head>
   <body class="main">
     <div class="app-container">
-      <div class="setting-item">
-        <div class="title">Switch Night Mode</div>
-        <div class="controls">
-          <input type="checkbox" id="darkMode" />
-        </div>
-      </div>
+      <header class="app-header">
+        <p class="eyebrow">Night Mode Shift</p>
+        <h1 class="headline">Screen Tint Controls</h1>
+      </header>
 
-      <div class="setting-item">
-        <div class="title">Opacity</div>
-        <div class="controls">
-          <div data-v-0c0e4d1f="" class="app-range-slider">
-            <div data-v-0c0e4d1f="" class="slider">
+      <section class="panel">
+        <div class="status-strip">
+          <span class="status-label">Mode Status</span>
+          <span id="modeStatus" class="status-badge">Off</span>
+        </div>
+
+        <div class="snapshot-grid">
+          <div class="snapshot-item">
+            <span>Tint</span>
+            <strong id="snapshotColor">rgb(65, 65, 65)</strong>
+          </div>
+          <div class="snapshot-item">
+            <span>Opacity</span>
+            <strong id="snapshotOpacity">50%</strong>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="title">Enable Night Mode</div>
+          <div class="controls">
+            <label class="switch" for="darkMode">
+              <input type="checkbox" id="darkMode" />
+              <span class="slider-toggle"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-item opacity-row">
+          <div class="title">Opacity</div>
+          <div id="opacityValue" class="value-pill">50%</div>
+        </div>
+
+        <div class="controls full-width">
+          <div class="app-range-slider">
+            <div class="slider">
               <div class="slider__wrapper">
-                <div class="slider__track slider__track--rectangular"></div>
                 <input
                   id="opacity"
                   max="1"
-                  type="range"
                   min="0"
                   step="0.001"
+                  type="range"
                   class="slider__input"
+                  aria-label="Opacity"
                 />
               </div>
             </div>
           </div>
         </div>
+
+        <div class="preset-row">
+          <button type="button" class="preset-btn" data-opacity="0.35">35%</button>
+          <button type="button" class="preset-btn" data-opacity="0.5">50%</button>
+          <button type="button" class="preset-btn" data-opacity="0.7">70%</button>
+        </div>
+
+        <div class="setting-item">
+          <div class="title">Tint Colors</div>
+          <div class="preview-wrap">
+            <span class="preview-label">Preview</span>
+            <span id="colorPreview" class="preview-dot"></span>
+          </div>
+        </div>
+        <div class="pallete">
+          <button
+            type="button"
+            class="color-item active"
+            style="background: rgb(75, 85, 99)"
+            aria-label="Color 1"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(87, 103, 78)"
+            aria-label="Color 2"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(120, 113, 108)"
+            aria-label="Color 3"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(56, 94, 111)"
+            aria-label="Color 4"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(122, 92, 124)"
+            aria-label="Color 5"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(109, 82, 73)"
+            aria-label="Color 6"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(62, 74, 104)"
+            aria-label="Color 7"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(95, 89, 70)"
+            aria-label="Color 8"
+          ></button>
+          <button
+            type="button"
+            class="color-item"
+            style="background: rgb(91, 102, 117)"
+            aria-label="Color 9"
+          ></button>
+        </div>
+
+        <div class="custom-color-row">
+          <label class="custom-color-label" for="customColor">Custom</label>
+          <input
+            type="color"
+            id="customColor"
+            class="custom-color-input"
+            value="#4b5563"
+            aria-label="Custom Color"
+          />
+          <button type="button" id="applyCustomColor" class="custom-color-btn">
+            Use
+          </button>
+        </div>
+
+        <div class="panel-actions">
+          <button type="button" id="resetDefaults" class="ghost-btn">
+            Reset Defaults
+          </button>
+        </div>
+      </section>
+
+      <div class="feedbackHint">
+        <span>Feedback on</span>
+        <a
+          target="_blank"
+          href="https://chromewebstore.google.com/detail/night-mode-shift/efcjieebfdljfajimmicnbhfpcppbckb?authuser=0&hl=en"
+        >
+          Chrome Store
+        </a>
       </div>
-      <div class="pallete">
-        <div
-          class="color-item active"
-          style="background: rgb(65, 65, 65)"
-        ></div>
-        <div class="color-item" style="background: rgb(62 155 37)"></div>
-        <div class="color-item" style="background: rgb(196, 239, 129)"></div>
-        <div class="color-item" style="background: rgb(250, 183, 96)"></div>
-        <div class="color-item" style="background: rgb(193, 96, 248)"></div>
-        <div class="color-item" style="background: rgb(245, 110, 174)"></div>
-        <div class="color-item" style="background: rgb(80, 91, 233)"></div>
-        <div class="color-item" style="background: rgb(245, 14, 90)"></div>
-        <div class="color-item" style="background: rgb(159 0 120)"></div>
-      </div>
-    </div>
-    <div class="feedbackHint">
-      <span>Feedback on</span>
-      <a
-        target="_blank"
-        href="https://chromewebstore.google.com/detail/night-mode-shift/efcjieebfdljfajimmicnbhfpcppbckb?authuser=0&hl=en"
-      >
-        Chrome Store
-      </a>
     </div>
   </body>
 </html>
